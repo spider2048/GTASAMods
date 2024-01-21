@@ -30,19 +30,22 @@ void loop() {
 
     __try {
     while (true) {
+        /* Spawn Tank */
         if (GetAsyncKeyState('T') & 0x8000) {
             ((void (*) ())(0x43a4a0)) ();
         }
 
+        /* Spawn police bike */
         if (GetAsyncKeyState('V') & 0x8000) {
             ((void (*) (int)) (0x43A0B0)) (523);
         }
 
+        /* Increase money */
         if (GetAsyncKeyState('O') & 0x8000) {
             int* score = (int*)(0xb7ce50);
             int* score_s = (int*)(0xb7ce54);
             *score = *score + 100000;
-            *score_s = *score_s + 100000;
+            *score_s = *score_s + 100000;     // RACE -- would not update
         }
 
         Sleep(1000);
